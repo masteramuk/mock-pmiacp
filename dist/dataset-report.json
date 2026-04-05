@@ -1,0 +1,41 @@
+{
+  "errors": [],
+  "warnings": [],
+  "summary": {
+    "total": 1200,
+    "counts": {
+      "easy": 240,
+      "medium": 360,
+      "hard": 600
+    },
+    "ratios": {
+      "easy": 20,
+      "medium": 30,
+      "hard": 50
+    },
+    "domains": {
+      "Mindset": 336,
+      "Leadership": 300,
+      "Product": 228,
+      "Delivery": 336
+    },
+    "domainRatios": {
+      "Mindset": 28,
+      "Leadership": 25,
+      "Product": 19,
+      "Delivery": 28
+    },
+    "targetRatios": {
+      "easy": 20,
+      "medium": 30,
+      "hard": 50
+    },
+    "targetDomainRatios": {
+      "Mindset": 28,
+      "Leadership": 25,
+      "Product": 19,
+      "Delivery": 28
+    },
+    "outlineVersion": "PMI-ACP Examination Content Outline - October 2024"
+  }
+}

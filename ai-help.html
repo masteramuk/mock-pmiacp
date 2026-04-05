@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PMI-ACP AI Help Guide</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Dataset maintenance guide</p>
+          <h1>AI Help Guide</h1>
+          <p class="hero-copy">
+            Use ChatGPT, Gemini, or another AI tool to refine or expand your
+            question bank while preserving the schema and the latest PMI-ACP
+            outline alignment.
+          </p>
+        </div>
+        <div class="hero-badges">
+          <span class="hero-badge">Prompt template</span>
+          <span class="hero-badge">Safe workflow</span>
+          <span class="hero-badge">Offline-friendly</span>
+        </div>
+      </header>
+
+      <main>
+        <div class="home-actions">
+          <a href="index.html" class="primary-btn button-link">Back to Exam App</a>
+          <a href="question-bank.html" class="secondary-btn button-link">Question Bank</a>
+          <a href="dataset-tools.html" class="secondary-btn button-link">Dataset Tools</a>
+        </div>
+
+        <section class="card">
+          <h2>Recommended Workflow</h2>
+          <div class="summary-box">
+            <strong>Good workflow</strong><br>
+            1. Export the current dataset JSON from the app or dataset tools page.<br>
+            2. Ask the AI to edit or add questions using the exact schema.<br>
+            3. Import the JSON or CSV into Dataset Tools, or paste copied text for review.<br>
+            4. Edit the staged questions before merging and downloading the merged dataset.
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Prompt Template</h2>
+          <pre class="help-pre">You are helping maintain a PMI-ACP mock exam dataset.
+
+Requirements:
+- Follow the PMI-ACP Examination Content Outline (October 2024)
+- Domains: Mindset, Leadership, Product, Delivery
+- Scenario-based questions only
+- 4 options (A-D)
+- Use single-answer and multiple-answer questions where appropriate
+- Include explanation
+- No duplicates
+- Keep IDs stable if editing existing questions
+- Return valid JSON items only
+
+Schema:
+{
+  "id": 1,
+  "question": "string",
+  "options": { "A": "string", "B": "string", "C": "string", "D": "string" },
+  "answer": "A" or ["A","C"],
+  "explanation": "string",
+  "domain": "Mindset",
+  "difficulty": "medium",
+  "selectionType": "single"
+}
+
+Task:
+- Improve wording and distractors for the supplied questions
+- Or add new questions without changing the schema</pre>
+        </section>
+      </main>
+
+      <footer class="footer-note">
+        <p class="footer-title">Notice and License</p>
+        <p>Copyright © Haszeli Ahmad. All rights reserved.</p>
+        <p>AI-generated practice material only. Not official PMI exam content. Use with caution.</p>
+      </footer>
+    </div>
+  </body>
+</html>

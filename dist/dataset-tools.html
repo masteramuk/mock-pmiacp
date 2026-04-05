@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PMI-ACP Dataset Tools</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Offline-ready dataset workspace</p>
+          <h1>Dataset Tools</h1>
+          <p class="hero-copy">
+            Import JSON, CSV from Excel, or pasted text copied from PDF or docs.
+            Review the imported questions, edit them, then bulk-merge them into
+            an updated dataset JSON for the app.
+          </p>
+        </div>
+        <div class="hero-badges">
+          <span class="hero-badge">Excel/CSV import</span>
+          <span class="hero-badge">Paste from PDF</span>
+          <span class="hero-badge">Bulk merge</span>
+        </div>
+      </header>
+
+      <main>
+        <div class="home-actions">
+          <a href="index.html" class="primary-btn button-link">Back to Exam App</a>
+          <a href="question-bank.html" class="secondary-btn button-link">Question Bank</a>
+          <a href="ai-help.html" class="secondary-btn button-link">AI Help Guide</a>
+        </div>
+
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h2>Import Sources</h2>
+              <p class="muted-text">
+                Use JSON for direct dataset updates, CSV for Excel exports, or
+                paste text copied from PDFs or other documents. Direct offline
+                parsing of `.pdf` and `.xlsx` files is not included here.
+              </p>
+            </div>
+            <div class="home-actions no-margin">
+              <button id="download-merged-dataset-btn" class="secondary-btn">Download Merged Dataset</button>
+            </div>
+          </div>
+
+          <div class="filter-grid">
+            <label class="secondary-btn file-label">
+              Import JSON
+              <input id="import-json-input" type="file" accept=".json,application/json" hidden />
+            </label>
+            <label class="secondary-btn file-label">
+              Import CSV (Excel-friendly)
+              <input id="import-csv-input" type="file" accept=".csv,text/csv" hidden />
+            </label>
+          </div>
+
+          <div class="filter-grid">
+            <label>
+              Paste Imported Text
+              <textarea id="paste-import-text" rows="10" placeholder="Paste copied questions here. Supported pattern: question line, A-D option lines, Answer:, Explanation:, Domain:, Difficulty:, Selection Type:. Separate questions with a blank line."></textarea>
+            </label>
+          </div>
+
+          <div class="home-actions">
+            <button id="parse-pasted-text-btn" class="primary-btn">Parse Pasted Text</button>
+            <button id="merge-staged-btn" class="secondary-btn">Bulk Merge Staged Questions</button>
+            <button id="clear-staged-btn" class="secondary-btn">Clear Staged Import</button>
+          </div>
+
+          <div id="tools-summary" class="summary-box"></div>
+          <div id="tools-validation" class="summary-box"></div>
+          <div id="tools-validation-list" class="review-list"></div>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h2>Staged Imported Questions</h2>
+              <p class="muted-text">
+                Review imported rows before merging them into the working
+                dataset.
+              </p>
+            </div>
+          </div>
+          <div id="staged-list" class="review-list"></div>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h2>Staged Question Editor</h2>
+              <p class="muted-text">
+                Select a staged question and adjust it before bulk merge.
+              </p>
+            </div>
+          </div>
+
+          <div id="staged-editor-status" class="summary-box">Choose a staged question to edit.</div>
+          <div class="filter-grid">
+            <label>
+              Question ID
+              <input id="staged-editor-id" type="number" />
+            </label>
+            <label>
+              Domain
+              <select id="staged-editor-domain">
+                <option value="Mindset">Mindset</option>
+                <option value="Leadership">Leadership</option>
+                <option value="Product">Product</option>
+                <option value="Delivery">Delivery</option>
+              </select>
+            </label>
+            <label>
+              Difficulty
+              <select id="staged-editor-difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+            </label>
+            <label>
+              Selection Type
+              <select id="staged-editor-selection-type">
+                <option value="single">Single</option>
+                <option value="multiple">Multiple</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="filter-grid">
+            <label>
+              Question
+              <textarea id="staged-editor-question" rows="5"></textarea>
+            </label>
+            <label>
+              Explanation
+              <textarea id="staged-editor-explanation" rows="5"></textarea>
+            </label>
+          </div>
+
+          <div class="filter-grid">
+            <label>
+              Option A
+              <textarea id="staged-editor-option-a" rows="3"></textarea>
+            </label>
+            <label>
+              Option B
+              <textarea id="staged-editor-option-b" rows="3"></textarea>
+            </label>
+            <label>
+              Option C
+              <textarea id="staged-editor-option-c" rows="3"></textarea>
+            </label>
+            <label>
+              Option D
+              <textarea id="staged-editor-option-d" rows="3"></textarea>
+            </label>
+          </div>
+
+          <div class="filter-grid">
+            <label>
+              Answer Key(s)
+              <input id="staged-editor-answer" type="text" placeholder="A or A,C" />
+            </label>
+          </div>
+
+          <div class="home-actions">
+            <button id="save-staged-item-btn" class="primary-btn">Save Staged Question</button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer-note">
+        <p class="footer-title">Notice and License</p>
+        <p>Copyright © Haszeli Ahmad. All rights reserved.</p>
+        <p>AI-generated practice material only. Not official PMI exam content. Use with caution.</p>
+      </footer>
+    </div>
+
+    <script src="question-bank.js"></script>
+    <script src="dataset-tools.js"></script>
+  </body>
+</html>

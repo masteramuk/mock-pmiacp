@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PMI-ACP Result</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero compact-hero">
+        <div>
+          <p class="eyebrow">Latest attempt</p>
+          <h1>Result Page</h1>
+        </div>
+        <div class="hero-badges">
+          <a href="index.html" class="secondary-btn button-link">Home</a>
+          <a href="history.html" class="secondary-btn button-link">History</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h2>Mock Exam Result</h2>
+              <p class="muted-text">Review the latest score, target status, timing, and question-by-question answers.</p>
+            </div>
+            <div class="action-bar no-margin">
+              <button id="download-result-btn" class="secondary-btn" title="Download the latest attempt as JSON">Download Attempt</button>
+              <button id="download-result-csv-btn" class="secondary-btn" title="Download the latest attempt as CSV">Download Attempt CSV</button>
+              <button id="print-result-btn" class="secondary-btn" title="Print the latest result">Print Attempt</button>
+            </div>
+          </div>
+
+          <div id="result-summary" class="result-grid compact-metrics-grid"></div>
+
+          <div class="card-subgrid">
+            <div id="result-domain-breakdown" class="summary-box domain-box"></div>
+            <div id="result-analysis" class="summary-box"></div>
+          </div>
+
+          <div class="action-bar">
+            <a href="index.html" class="primary-btn button-link" title="Back to home">Back to Home</a>
+            <a href="history.html" class="secondary-btn button-link" title="Open history and older attempts">View History</a>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h2>Question Review</h2>
+              <p class="muted-text">Every option is shown with your answer and the correct answer highlighted.</p>
+            </div>
+          </div>
+          <div id="review-list" class="review-list"></div>
+        </section>
+      </main>
+
+      <footer class="footer-note">
+        <p class="footer-title">Notice and License</p>
+        <p>Copyright © Haszeli Ahmad. All rights reserved.</p>
+        <p>AI-generated practice material only. Not official PMI exam content. Use with caution.</p>
+      </footer>
+    </div>
+
+    <script src="question-bank.js"></script>
+    <script src="core.js"></script>
+    <script src="result.js"></script>
+  </body>
+</html>

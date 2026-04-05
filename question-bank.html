@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PMI-ACP Question Bank</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero compact-hero">
+        <div>
+          <p class="eyebrow">Question bank workspace</p>
+          <h1>Question Bank</h1>
+          <p class="hero-copy">
+            Browse the dataset, inspect questions, edit them in-browser, run a duplicate check, and export the updated JSON.
+          </p>
+        </div>
+        <div class="hero-badges">
+          <a href="index.html" class="secondary-btn button-link">Home</a>
+          <a href="dataset-tools.html" class="secondary-btn button-link">Dataset Tools</a>
+          <a href="ai-help.html" class="secondary-btn button-link">AI Help Guide</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h2>Question Browser</h2>
+              <p class="muted-text">Search and inspect the embedded dataset before editing.</p>
+            </div>
+            <div class="action-bar no-margin">
+              <button id="download-bank-btn" class="secondary-btn" title="Download the current editable dataset as JSON">Download Dataset JSON</button>
+              <label class="secondary-btn file-label" title="Import an edited dataset JSON file">
+                Import Edited Dataset
+                <input id="import-bank-input" type="file" accept=".json,application/json" hidden />
+              </label>
+            </div>
+          </div>
+
+          <div class="filter-grid history-filter-grid">
+            <label>
+              Search Questions
+              <input id="bank-search-input" type="text" placeholder="Search by question, explanation, or domain" />
+            </label>
+            <label>
+              Domain Filter
+              <select id="bank-domain-filter">
+                <option value="all">All domains</option>
+                <option value="Mindset">Mindset</option>
+                <option value="Leadership">Leadership</option>
+                <option value="Product">Product</option>
+                <option value="Delivery">Delivery</option>
+              </select>
+            </label>
+            <label>
+              Difficulty Filter
+              <select id="bank-difficulty-filter">
+                <option value="all">All difficulties</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+            </label>
+          </div>
+
+          <div id="bank-summary" class="summary-box"></div>
+          <div class="pagination-bar">
+            <button id="bank-prev-page-btn" class="secondary-btn" type="button" title="Show the previous page of questions">Previous Page</button>
+            <div id="bank-page-status" class="pagination-status"></div>
+            <button id="bank-next-page-btn" class="secondary-btn" type="button" title="Show the next page of questions">Next Page</button>
+          </div>
+          <div id="bank-list" class="review-list"></div>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h2>Dataset Editor</h2>
+              <p class="muted-text">Load a question from the browser list or create a new one, then export the edited dataset JSON.</p>
+            </div>
+            <div class="action-bar no-margin">
+              <button id="new-question-btn" class="secondary-btn" title="Create a new question in the editable dataset">Create New Question</button>
+              <button id="save-editor-btn" class="primary-btn" title="Save the current edited question">Save Current Question</button>
+              <button id="download-edited-bank-btn" class="secondary-btn" title="Download the edited dataset JSON">Download Edited Dataset</button>
+            </div>
+          </div>
+
+          <div id="editor-status" class="summary-box">Choose a question from the Question Browser to start editing.</div>
+
+          <div class="filter-grid">
+            <label>
+              Question ID
+              <input id="editor-id" type="number" readonly />
+            </label>
+            <label>
+              Domain
+              <select id="editor-domain">
+                <option value="Mindset">Mindset</option>
+                <option value="Leadership">Leadership</option>
+                <option value="Product">Product</option>
+                <option value="Delivery">Delivery</option>
+              </select>
+            </label>
+            <label>
+              Difficulty
+              <select id="editor-difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+            </label>
+            <label>
+              Selection Type
+              <select id="editor-selection-type">
+                <option value="single">Single</option>
+                <option value="multiple">Multiple</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="filter-grid">
+            <label>
+              Question
+              <textarea id="editor-question" rows="5"></textarea>
+            </label>
+            <label>
+              Explanation
+              <textarea id="editor-explanation" rows="5"></textarea>
+            </label>
+          </div>
+
+          <div class="filter-grid">
+            <label>
+              Option A
+              <textarea id="editor-option-a" rows="3"></textarea>
+            </label>
+            <label>
+              Option B
+              <textarea id="editor-option-b" rows="3"></textarea>
+            </label>
+            <label>
+              Option C
+              <textarea id="editor-option-c" rows="3"></textarea>
+            </label>
+            <label>
+              Option D
+              <textarea id="editor-option-d" rows="3"></textarea>
+            </label>
+          </div>
+
+          <div class="filter-grid">
+            <label>
+              Answer Key(s)
+              <input id="editor-answer" type="text" placeholder="A or A,C" />
+            </label>
+          </div>
+
+          <div class="action-bar">
+            <button id="run-duplicate-check-btn" class="secondary-btn" title="Scan the editable dataset for likely duplicate question stems">Run Duplicate Check</button>
+          </div>
+          <div id="duplicate-summary" class="summary-box">Duplicate checker has not been run yet.</div>
+          <div id="duplicate-list" class="review-list"></div>
+        </section>
+      </main>
+
+      <footer class="footer-note">
+        <p class="footer-title">Notice and License</p>
+        <p>Copyright © Haszeli Ahmad. All rights reserved.</p>
+        <p>AI-generated practice material only. Not official PMI exam content. Use with caution.</p>
+      </footer>
+    </div>
+
+    <script src="question-bank.js"></script>
+    <script src="core.js"></script>
+    <script src="bank.js"></script>
+  </body>
+</html>

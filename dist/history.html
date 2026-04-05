@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PMI-ACP History</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero compact-hero">
+        <div>
+          <p class="eyebrow">Analytics and review</p>
+          <h1>History Page</h1>
+        </div>
+        <div class="hero-badges">
+          <a href="index.html" class="secondary-btn button-link">Home</a>
+          <a href="result.html" class="secondary-btn button-link">Latest Result</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h2>History and Analytics</h2>
+              <p class="muted-text">Saved attempts, domain performance, and earlier Q&A review in one place.</p>
+            </div>
+            <div class="action-bar no-margin">
+              <button id="download-history-btn" class="secondary-btn" title="Download all history as JSON">Download All History</button>
+              <button id="download-history-csv-btn" class="secondary-btn" title="Download all history as CSV">Download History CSV</button>
+              <label class="secondary-btn file-label" title="Import a JSON history backup">
+                Import History Backup
+                <input id="import-history-input" type="file" accept=".json,application/json" hidden />
+              </label>
+              <button id="print-history-btn" class="secondary-btn" title="Print the history page">Print History</button>
+            </div>
+          </div>
+
+          <div class="filter-grid history-filter-grid">
+            <label>
+              Search Attempts
+              <input id="history-search-input" type="text" placeholder="Search by date, result, or difficulty" />
+            </label>
+            <label>
+              Difficulty Filter
+              <select id="history-difficulty-filter">
+                <option value="all">All difficulties</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+            </label>
+            <label>
+              Result Filter
+              <select id="history-result-filter">
+                <option value="all">All results</option>
+                <option value="Pass">Pass</option>
+                <option value="Needs Improvement">Needs Improvement</option>
+              </select>
+            </label>
+          </div>
+
+          <div id="history-domain-analysis" class="summary-box domain-box"></div>
+          <div id="history-analysis" class="summary-box"></div>
+
+          <div id="history-list" class="history-list"></div>
+        </section>
+
+        <section id="history-detail-card" class="card hidden">
+          <div class="section-head">
+            <div>
+              <h2>Attempt Detail</h2>
+              <p class="muted-text">Open a past attempt to review answers, domain results, and explanations.</p>
+            </div>
+            <div class="action-bar no-margin">
+              <button id="close-history-detail-btn" class="secondary-btn" title="Close the attempt detail panel">Close Detail</button>
+              <button id="download-selected-attempt-btn" class="secondary-btn" title="Download this attempt as JSON">Download This Attempt</button>
+              <button id="download-selected-attempt-csv-btn" class="secondary-btn" title="Download this attempt as CSV">Download This Attempt CSV</button>
+              <button id="print-selected-attempt-btn" class="secondary-btn" title="Print this attempt detail">Print This Attempt</button>
+            </div>
+          </div>
+
+          <div class="filter-grid history-filter-grid">
+            <label>
+              Search Questions
+              <input id="detail-search-input" type="text" placeholder="Search question text or explanation" />
+            </label>
+            <label>
+              Domain Filter
+              <select id="detail-domain-filter">
+                <option value="all">All domains</option>
+                <option value="Mindset">Mindset</option>
+                <option value="Leadership">Leadership</option>
+                <option value="Product">Product</option>
+                <option value="Delivery">Delivery</option>
+              </select>
+            </label>
+            <label class="checkbox-label compact-inline-checkbox">
+              <input id="detail-missed-only-checkbox" type="checkbox" />
+              <span>Missed questions only</span>
+            </label>
+          </div>
+
+          <div id="history-detail-domain-breakdown" class="summary-box domain-box"></div>
+          <div id="history-detail-summary" class="result-grid compact-metrics-grid"></div>
+          <div id="history-detail-analysis" class="summary-box detail-copy-box"></div>
+          <div id="history-detail-review" class="review-list"></div>
+        </section>
+
+        <section class="card compact-card">
+          <h2>Bookmarked Questions</h2>
+          <div id="bookmark-list" class="review-list"></div>
+        </section>
+      </main>
+
+      <footer class="footer-note">
+        <p class="footer-title">Notice and License</p>
+        <p>Copyright © Haszeli Ahmad. All rights reserved.</p>
+        <p>AI-generated practice material only. Not official PMI exam content. Use with caution.</p>
+      </footer>
+    </div>
+
+    <script src="question-bank.js"></script>
+    <script src="core.js"></script>
+    <script src="history.js"></script>
+  </body>
+</html>

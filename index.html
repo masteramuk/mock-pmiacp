@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PMI-ACP Mock Exam</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Offline-ready PMI-ACP practice</p>
+          <h1>PMI-ACP Mock Exam</h1>
+          <p class="hero-copy">
+            Practice scenario-based PMI-ACP questions with offline exam mode,
+            saved history, result review, dataset tools, and AI-assisted update guidance.
+          </p>
+        </div>
+        <div class="hero-badges">
+          <span class="hero-badge">1200 questions</span>
+          <span class="hero-badge">Latest outline</span>
+          <span class="hero-badge">Offline capable</span>
+        </div>
+      </header>
+
+      <main>
+        <div class="dashboard-grid">
+          <section class="card feature-card">
+            <h2>Start a Mock Exam</h2>
+            <p class="muted-text">
+              Choose your mode, difficulty mix, and question count. The exam page will open separately so the flow stays cleaner and easier to maintain.
+            </p>
+            <div class="form-grid">
+              <label>
+                Practice Mode
+                <select id="mode-select">
+                  <option value="exam">Exam mode</option>
+                  <option value="study">Study mode</option>
+                </select>
+              </label>
+
+              <div>
+                <span class="field-label">Difficulty Levels</span>
+                <div class="choice-grid">
+                  <label class="checkbox-label compact-checkbox">
+                    <input id="difficulty-easy" type="checkbox" checked />
+                    <span>Easy</span>
+                  </label>
+                  <label class="checkbox-label compact-checkbox">
+                    <input id="difficulty-medium" type="checkbox" checked />
+                    <span>Medium</span>
+                  </label>
+                  <label class="checkbox-label compact-checkbox">
+                    <input id="difficulty-hard" type="checkbox" checked />
+                    <span>Hard</span>
+                  </label>
+                </div>
+              </div>
+
+              <label>
+                Total Questions
+                <select id="question-count-select">
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="50">50</option>
+                  <option value="60">60</option>
+                  <option value="120" selected>Full mock exam - 120</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="action-bar">
+              <button id="start-exam-btn" class="primary-btn" title="Start a new mock exam">Start Exam</button>
+              <a id="resume-exam-link" href="exam.html" class="secondary-btn button-link hidden" title="Resume the current in-progress exam">Resume Exam</a>
+              <a id="latest-result-link" href="result.html" class="secondary-btn button-link hidden" title="Open the latest completed result">Latest Result</a>
+              <a href="history.html" class="secondary-btn button-link" title="Open saved attempt history">History</a>
+              <a href="question-bank.html" class="secondary-btn button-link" title="Browse and edit the question bank">Question Bank</a>
+              <a href="dataset-tools.html" class="secondary-btn button-link" title="Open dataset import and editing tools">Dataset Tools</a>
+              <a href="ai-help.html" class="secondary-btn button-link" title="Open AI prompt guidance for dataset updates">AI Help Guide</a>
+            </div>
+          </section>
+
+          <section class="card compact-card">
+            <h2>Quick Insights</h2>
+            <div id="home-history-summary" class="stack-grid"></div>
+          </section>
+        </div>
+
+        <div class="dashboard-grid">
+          <section class="card">
+            <h2>Question Bank Health</h2>
+            <div id="dataset-summary" class="summary-box"></div>
+            <div id="dataset-issues" class="notice-box"></div>
+          </section>
+
+          <section class="card">
+            <h2>Exam Coverage</h2>
+            <div id="home-domain-summary" class="summary-box"></div>
+          </section>
+        </div>
+
+        <section class="card">
+          <h2>Navigation</h2>
+          <div class="nav-grid">
+            <a href="exam.html" class="nav-card" title="Open the exam page">
+              <strong>Exam Page</strong>
+              <span>Focused question flow with timer and navigation palette.</span>
+            </a>
+            <a href="result.html" class="nav-card" title="Open the latest result page">
+              <strong>Result Page</strong>
+              <span>See the latest score, breakdown, and full question review.</span>
+            </a>
+            <a href="history.html" class="nav-card" title="Open history analytics and past attempt review">
+              <strong>History Page</strong>
+              <span>Analytics, past attempt detail, and previous question-by-question review.</span>
+            </a>
+            <a href="question-bank.html" class="nav-card" title="Open the question bank browser and editor">
+              <strong>Question Bank</strong>
+              <span>Search, edit, create, and export questions with duplicate checking.</span>
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer-note">
+        <p class="footer-title">Notice and License</p>
+        <p>Copyright © Haszeli Ahmad. All rights reserved.</p>
+        <p>AI-generated practice material only. Not official PMI exam content. Use with caution.</p>
+      </footer>
+    </div>
+
+    <script src="question-bank.js"></script>
+    <script src="core.js"></script>
+    <script src="home.js"></script>
+  </body>
+</html>
